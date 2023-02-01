@@ -1,0 +1,99 @@
+﻿@model TraversalProject.Models.UserRegisterViewModel
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Kayıt Ol | Traversal Travel</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+	<!--/Style-CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!--//Style-CSS -->
+</head>
+
+<body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-right">
+					<div class="overlay">
+						<div class="grid-info-form">
+							<h5>Hoşgeldin Gezginci</h5>
+							<h3>Buralarda yeni olmalısın </h3>
+							<p>
+								Görünüşe göre aramıza katılmaya geldin eğer kayıt işlemlerini tamamladıysan biran önce giriş yaparak aramıza katılabilir ve bize merak ettiğin herşeyi sorabilirsin, 
+								Gezmek istediğin yerler hakkında bilgi alabilirsin hatta bize gezilmesi gereken yerler hakkında tavsiyede bulunabilirsin belki beraber yeni rotalar için yola düşeriz kim bilebilir... Kayıt yapma işlemini bitirdiysen Aşagodaki buton'a Tıklayarak Giriş yapma sayfasına gidebilirsin.. Gezilmesi gereken daha çok yer var.
+							</p>
+							<a href="/Login/SignIn" class="read-more-1 btn">Giriş yap</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-left">
+					<div class="middle">
+						<h4 align="center">Hızlıca Kayıt Ol</h4>
+						<p align="center">Seni buralarda görmek bize heyecan veriyor çünkü, her geçen gün sayımız dahada fazla.. </p>
+					</div>
+					<form method="post" class="signin-form">
+						<div class="form-input">
+							<label>Adınız Soyadınız</label>
+							<input type="text" placeholder="Ad soyad.." asp-for="NameSurname" />
+							<span asp-validation-for="NameSurname" style="color:crimson"></span>
+						</div>
+						<div class="form-input">
+							<label>Kullanıcı Adınız</label>
+							<input type="text" placeholder="Kullanıcı Adı.." asp-for="UserName" />
+							<span asp-validation-for="UserName" style="color:crimson"></span>
+						</div>
+						<div class="form-input">
+							<label>Mail Adresiniz</label>
+							<input type="email" placeholder="Mail'inizi girin.." asp-for="Mail" />
+							<span asp-validation-for="Mail" style="color:crimson"></span>
+						</div>
+						<div class="form-input">
+							<label>Şifreniz</label>
+							<input type="password" placeholder="Şifreniz.." asp-for="Password" />
+							<span asp-validation-for="Password" style="color:crimson"></span>
+						</div>
+						<div class="form-input">
+							<label>Şifreniz Tekrar</label>
+							<input type="password" placeholder="Şifre Tekrar.." asp-for="ComfirmPassword" />
+							<span asp-validation-for="ComfirmPassword" style="color:crimson"></span>
+						</div>
+						<div style="color:crimson" asp-validation-summary="ModelOnly">
+
+						</div>
+						<label class="container">
+							<a href="#">Kullanım</a> ve <a href="#">Gizlilik</a> koşullarını kabul ediyorum.
+							<input type="checkbox">
+							<span  class="checkmark"></span>
+						</label>
+						<button class="btn">Kayıt Ol</button>
+					</form>
+					<div class="copy-right text-center">
+						<p>
+							© @DateTime.Now.Year.ToString() Tüm Hakları saklıdır. | Traversal Travel
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- //login-section -->
+</body>
+
+</html>

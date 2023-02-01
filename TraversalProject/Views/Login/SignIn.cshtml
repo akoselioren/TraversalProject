@@ -1,0 +1,81 @@
+﻿@model TraversalProject.Models.UserRegisterViewModel
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Giriş Yap | Traversal Travel</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+	<!--/Style-CSS -->
+	<link rel="stylesheet" href="~/login/css/style.css" type="text/css" media="all" />
+	<!--//Style-CSS -->
+</head>
+
+<body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-right">
+					<div class="overlay">
+						<div class="grid-info-form">
+							<h5>Hoşgeldin Gezginci</h5>
+							<h3>Buralarda yeni misin ?</h3>
+							<p>
+								Hey Gezginci! hoşgeldin eğer bu sayfaya yolun düştüyse bize katılmış olmalısın, Yoksa daha hesap oluşturmadın mı ? Eğer öyleyse hemen üye olmak için aşağıdaki buton'a basarak gideceğin sayfadaki kayıt formunu doldurarak hızlıca aramıza katılabilirsin, Senin ile tanışmak için sabırsızlanıyoruz...
+							</p>
+							<a href="/Login/SignUp" class="read-more-1 btn">Hızlıca Kayıt Ol</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-left">
+					<div class="middle">
+						<h4 align ="center">Hızlıca Giriş Yap</h4>
+						<p align="center">Hoşgeldin aklımız sende, gözümüz yollarda kaldı..</p>
+					</div>
+					<form action="#" method="post" class="signin-form">
+						<div class="form-input">
+							<label>Email</label>
+							<input type="email" placeholder="Mail adresiniz.." asp-for="Mail" />
+							<span asp-validation-for="Mail" style="color:crimson"></span>
+						</div>
+						<div class="form-input">
+							<label>Şifre  </label>
+							<input type="password" placeholder="Şifreniz" asp-for="Password" />
+							<span asp-validation-for="Password" style="color:crimson"></span>
+							<div align="right"><a href="#">Şifremi unuttum.</a></div>
+						</div>
+						<label class="container">
+							Beni hatırla
+							<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<button class="btn">Giriş yap</button>
+					</form>
+					<div class="copy-right text-center">
+						<p>
+							© @DateTime.Now.Year.ToString() Tüm Hakları saklıdır. | Traversal Travel
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- //login-section -->
+</body>
+
+</html>
