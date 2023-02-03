@@ -1,4 +1,5 @@
-﻿@model TraversalProject.Models.UserRegisterViewModel
+﻿@model TraversalProject.Models.UserSignInViewModel
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -45,14 +46,14 @@
 						<h4 align ="center">Hızlıca Giriş Yap</h4>
 						<p align="center">Hoşgeldin aklımız sende, gözümüz yollarda kaldı..</p>
 					</div>
-					<form action="#" method="post" class="signin-form">
+					<form method="post" class="signin-form" method="post">
 						<div class="form-input">
-							<label>Email</label>
-							<input type="email" placeholder="Mail adresiniz.." asp-for="Mail" />
-							<span asp-validation-for="Mail" style="color:crimson"></span>
+							<label>Kullanıcı adınız</label>
+							<input type="text" placeholder="Kullanıcı adı.." asp-for="UserName" />
+							<span asp-validation-for="UserName" style="color:crimson"></span>
 						</div>
 						<div class="form-input">
-							<label>Şifre  </label>
+							<label>Şifreniz</label>
 							<input type="password" placeholder="Şifreniz" asp-for="Password" />
 							<span asp-validation-for="Password" style="color:crimson"></span>
 							<div align="right"><a href="#">Şifremi unuttum.</a></div>

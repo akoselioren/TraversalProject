@@ -12,5 +12,7 @@ namespace Entity.Concrete
         public string ImageUrl { get; set; }
         public string NameSurname { get; set; }
         public string Gender { get; set; }
+
+        public List<Reservation> Reservations { get; set; }
     }
 }
