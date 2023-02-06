@@ -1,10 +1,12 @@
 ﻿using Business.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TraversalProject.Areas.Member.Controllers
 {
@@ -13,25 +15,44 @@ namespace TraversalProject.Areas.Member.Controllers
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
-        ReservationManager reservationManager=new ReservationManager(new EfReservationDal());
+        ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
 
-        public IActionResult MyCurrentReservation()
+        private readonly UserManager<AppUser> _userManager;
+
+        public ReservationController(UserManager<AppUser> userManager)
         {
-            return View();
+            _userManager = userManager;
         }
-        public IActionResult MyOldReservation()
+
+        public async Task<IActionResult> MyCurrentReservation()
         {
-            return View();
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListWithReservationByAccepted(values.Id);
+            return View(valuesList);
+        }
+        public async Task<IActionResult> MyOldReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListWithReservationByPrevious(values.Id);
+            return View(valuesList);
         }
         [HttpGet]
         public IActionResult NewReservation()
         {
-            List<SelectListItem> values = (from x in destinationManager.TGetList() select new SelectListItem { 
-            Text=x.City,
-            Value = x.DestinationID.ToString()
-            }).ToList();
-            ViewBag.v=values;
+            List<SelectListItem> values = (from x in destinationManager.TGetList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.City,
+                                               Value = x.DestinationID.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
             return View();
+        }
+        public async Task<IActionResult> MyApprovalReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListWithReservationByWaitApproval(values.Id);
+            return View(valuesList);
         }
         [HttpPost]
         public IActionResult NewReservation(Reservation p)

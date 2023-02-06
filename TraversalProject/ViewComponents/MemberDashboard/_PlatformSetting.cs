@@ -2,13 +2,14 @@
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalProject.ViewComponents.Default
+namespace TraversalProject.ViewComponents.MemberDashboard
 {
-    public class _FeaturePartial:ViewComponent
+    public class _PlatformSetting: ViewComponent
     {
-        FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+        GuideManager guideManager = new GuideManager(new EfGuideDal());
         public IViewComponentResult Invoke()
         {
+
             return View();
         }
     }

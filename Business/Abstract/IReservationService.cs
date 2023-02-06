@@ -9,5 +9,8 @@ namespace Business.Abstract
 {
     public interface IReservationService :IGenericService<Reservation>
     {
+        List<Reservation> GetListWithReservationByAccepted(int id);
+        List<Reservation> GetListWithReservationByPrevious(int id);
+        List<Reservation> GetListWithReservationByWaitApproval(int id);
     }
 }

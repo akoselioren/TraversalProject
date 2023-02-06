@@ -1,13 +1,13 @@
 ﻿@using Entity.Concrete
 @model List<Reservation>
 @{
-    ViewData["Title"] = "MyCurrentReservation";
+    ViewData["Title"] = "MyApprovalReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<h1>Aktif Rezervasyonlarım</h1>
+<h1>Onay Bekleyen Rezervasyonlarım</h1>
 @if (!Model.Any())
 {
-    <span>Aktif rezervasyon bulunmamaktadır.</span>
+    <span>Onay Bekleyen rezervasyon bulunmamaktadır.</span>
 }
 else
 {
@@ -32,5 +32,4 @@ else
         }
     </table>
 }
-
 
