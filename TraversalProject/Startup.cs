@@ -59,11 +59,6 @@ namespace TraversalProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
-                RequestPath = new PathString("/vendor")
-            });
             app.UseAuthentication();
             app.UseRouting();
 

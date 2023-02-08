@@ -5,15 +5,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalProject.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class DestinationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
-        [Area("Admin")]
+        
         public IActionResult Index()
         {
             
             var values = destinationManager.TGetList();
             return View(values);
+        }
+        [HttpGet]
+        public IActionResult AddDestination()
+        {
+            return View();
         }
         [HttpPost]
         public IActionResult AddDestination(Destination destination)

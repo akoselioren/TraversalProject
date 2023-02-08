@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_AdminDashboardHeader")
+  <body>
+    <!-- Layout wrapper -->
+              <div class="row">
+
+                  @await Component.InvokeAsync("_DashboardBanner")
+
+
+        @await Component.InvokeAsync("_Cards1Statistic")
+
+                
+                <!-- Total Revenue -->
+        @await Component.InvokeAsync("_TotalRevenue")
+                <!--/ Total Revenue -->
+         @await Component.InvokeAsync("_Cards2Statistic")
+              </div>
+              <div class="row">
+                <!-- Order Statistics -->
+        @await Component.InvokeAsync("_DestinationStatistic")
+                <!--/ Order Statistics -->
+
+                <!-- Expense Overview -->
+        @await Component.InvokeAsync("_DestinationStatistic2")
+                <!--/ Expense Overview -->
+
+                <!-- Transactions -->
+        @await Component.InvokeAsync("_AdminGuideList")
+                <!--/ Transactions -->
+              </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          <!-- Content wrapper -->
+      
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    
+
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="~/admin/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/admin/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/admin/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="~/admin/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="~/admin/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/admin/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="~/admin/assets/js/dashboards-analytics.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>
