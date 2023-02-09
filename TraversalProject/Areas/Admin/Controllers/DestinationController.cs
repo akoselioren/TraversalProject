@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -8,12 +9,17 @@ namespace TraversalProject.Areas.Admin.Controllers
     [Area("Admin")]
     public class DestinationController : Controller
     {
-        DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
-        
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
             
-            var values = destinationManager.TGetList();
+            var values = _destinationService.TGetList();
             return View(values);
         }
         [HttpGet]
@@ -24,26 +30,26 @@ namespace TraversalProject.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddDestination(Destination destination)
         {
-            destinationManager.TAdd(destination);
-            return RedirectToAction("Index");
+            _destinationService.TAdd(destination);
+            return Redirect(Url.Action("Destination", "Admin") + "/Index");
         }
         public IActionResult DeleteDestination(int id)
         {
-            var values = destinationManager.TGetById(id);
-            destinationManager.TDelete(values);
-            return RedirectToAction("Index");
+            var values = _destinationService.TGetById(id);
+            _destinationService.TDelete(values);
+            return Redirect(Url.Action("Destination", "Admin") + "/Index");
         }
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var values = destinationManager.TGetById(id);
+            var values = _destinationService.TGetById(id);
             return View(values);
         }
         [HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            destinationManager.TUpdate(destination);
-            return RedirectToAction("Index");
+            _destinationService.TUpdate(destination);
+            return Redirect(Url.Action("Destination", "Admin") + "/Index");
         }
     }
 }

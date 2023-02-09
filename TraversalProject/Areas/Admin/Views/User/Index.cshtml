@@ -1,0 +1,47 @@
+﻿@using Entity.Concrete
+@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcı Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Adı Soyadı</th>
+        <th>Kullanıcı Adı</th>
+        <th>Mail adresi</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+        <th>Yorumlar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.NameSurname</td>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td><a href="/Admin/User/DeleteUser/@item.Id" class="btn btn-outline-danger" onclick="return confirm('Silmek istediğinden emin misin?')">Sil</a></td>
+            <td><a href="/Admin/User/EditUser/@item.Id" class="btn btn-outline-success">Düzenle</a></td>
+            <td><a href="/Admin/User/CommentUser/@item.Id" class="btn btn-outline-info">Yorumları</a></td>
+            <td><a href="/Admin/User/ReservationUser/@item.Id" class="btn btn-outline-primary">Tur Geçmişi</a></td>
+        </tr>
+    }
+</table>
+
+
+<script>
+    function clicked(e) {
+        if (!confirm('Silmek istediğinden emin misin?')) {
+            e.preventDefault();
+        }
+    }
+</script> 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
