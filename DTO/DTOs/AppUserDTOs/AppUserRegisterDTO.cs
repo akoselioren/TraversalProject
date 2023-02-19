@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO.DTOs.AppUserDTOs
 {
-    public class AppUserRegisterDTO
+    public class AppUserRegisterDto
     {
             public string NameSurname { get; set; }
             public string UserName { get; set; }

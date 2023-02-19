@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO.DTOs.CityDTOs
 {
-    public class CityAddDTO
+    public class CityAddDto
     {
         public int CityID { get; set; }
         public string CityName { get; set; }

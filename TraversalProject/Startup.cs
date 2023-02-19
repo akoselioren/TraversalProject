@@ -1,26 +1,16 @@
-using Business.Abstract;
-using Business.Concrete;
 using Business.Container;
-using DataAccess.Abstract;
 using DataAccess.Concrete;
-using DataAccess.EntityFramework;
 using Entity.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using TraversalProject.Models;
 
 namespace TraversalProject
@@ -50,8 +40,12 @@ namespace TraversalProject
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
             services.ContainerDependencies();
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
+
+            services.CustomValidator();
+
+            services.AddControllersWithViews().AddFluentValidation();
 
             services.AddMvc(config =>
             {

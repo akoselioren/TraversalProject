@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO.DTOs.MailDTOs
 {
-    public class MailRequestDTO
+    public class MailRequestDto
     {
         public string Name { get; set; }
         public string SenderMail { get; set; }

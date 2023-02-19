@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules
 {
-    public class AppUserRegisterValidator : AbstractValidator<AppUserRegisterDTO>
+    public class AppUserRegisterValidator : AbstractValidator<AppUserRegisterDto>
     {
         public AppUserRegisterValidator()
         {
