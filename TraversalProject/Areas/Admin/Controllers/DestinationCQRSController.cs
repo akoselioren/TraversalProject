@@ -13,12 +13,16 @@ namespace TraversalProject.Areas.Admin.Controllers
         private readonly GetAllDestinationQueryHandler _getAllDestinationQueryHandler;
         private readonly GetDestinationByIdQueryHandler _getDestinationByIdQueryHandler;
         private readonly CreateDestinationCommandHandler _createDestinationCommandHandler;
+        private readonly RemoveDestinationCommandHandler _removeDestinationCommandHandler;
+        private readonly UpdateDestinationCommendHandler _updateDestinationCommendHandler;
 
-        public DestinationCQRSController(GetAllDestinationQueryHandler getAllDestinationQueryHandler, GetDestinationByIdQueryHandler getDestinationByIdQueryHandler, CreateDestinationCommandHandler createDestinationCommandHandler)
+        public DestinationCQRSController(GetAllDestinationQueryHandler getAllDestinationQueryHandler, GetDestinationByIdQueryHandler getDestinationByIdQueryHandler, CreateDestinationCommandHandler createDestinationCommandHandler, RemoveDestinationCommandHandler removeDestinationCommandHandler, UpdateDestinationCommendHandler updateDestinationCommendHandler)
         {
             _getAllDestinationQueryHandler = getAllDestinationQueryHandler;
             _getDestinationByIdQueryHandler = getDestinationByIdQueryHandler;
             _createDestinationCommandHandler = createDestinationCommandHandler;
+            _removeDestinationCommandHandler = removeDestinationCommandHandler;
+            _updateDestinationCommendHandler = updateDestinationCommendHandler;
         }
 
         public IActionResult Index()
@@ -32,6 +36,12 @@ namespace TraversalProject.Areas.Admin.Controllers
             var values = _getDestinationByIdQueryHandler.Handle(new GetDestinationByIdQuery(id));
             return View(values);
         }
+        [HttpPost]
+        public IActionResult GetDestination(UpdateDestinationCommand command)
+        {
+            _updateDestinationCommendHandler.Handle(command);
+            return Redirect(Url.Action("DestinationCQRS", "Admin") + "/Index");
+        }
         [HttpGet]
         public IActionResult AddDestination()
         {
@@ -41,6 +51,12 @@ namespace TraversalProject.Areas.Admin.Controllers
         public IActionResult AddDestination(CreateDestinationCommand command)
         {
             _createDestinationCommandHandler.Handle(command);
+            return Redirect(Url.Action("DestinationCQRS", "Admin") + "/Index");
+        }
+
+        public IActionResult DeleteDestination(int id)
+        {
+            _removeDestinationCommandHandler.Handle(new RemoveDestinationCommand(id));
             return Redirect(Url.Action("DestinationCQRS", "Admin") + "/Index");
         }
     }

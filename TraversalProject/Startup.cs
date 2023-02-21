@@ -2,6 +2,7 @@ using Business.Container;
 using DataAccess.Concrete;
 using Entity.Concrete;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,12 @@ namespace TraversalProject
         {
             services.AddScoped<GetAllDestinationQueryHandler>();
             services.AddScoped<GetDestinationByIdQueryHandler>();
+            services.AddScoped<CreateDestinationCommandHandler>();
+            services.AddScoped<RemoveDestinationCommandHandler>();
+            services.AddScoped<UpdateDestinationCommendHandler>();
+
+            services.AddMediatR(typeof(Startup));
+
 
             services.AddLogging(x =>
             {
